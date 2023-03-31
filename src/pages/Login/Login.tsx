@@ -1,6 +1,6 @@
 import { Box, Button, TextField, Typography } from "@mui/material";
 import { useFormik } from "formik";
-import { validationSchema } from "./Login.utls";
+import { loginValidationSchema } from "./Login.utls";
 
 const Login = () => {
   const onSubmit = (values: any) => {
@@ -12,7 +12,7 @@ const Login = () => {
       email: "",
       password: "",
     },
-    validationSchema: validationSchema,
+    validationSchema: loginValidationSchema,
     onSubmit: onSubmit,
   });
 
@@ -37,7 +37,7 @@ const Login = () => {
           fullWidth
           id="email"
           name="email"
-          label="email"
+          label="Email"
           value={formik.values.email}
           onChange={formik.handleChange}
           error={formik.touched.email && Boolean(formik.errors.email)}
