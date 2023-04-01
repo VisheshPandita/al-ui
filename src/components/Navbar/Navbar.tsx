@@ -11,7 +11,7 @@ const Navbar = () => {
   return (
     <Box component="nav">
       <Grid container>
-        <Grid xs={3}>
+        <Grid xs={3} item>
           <NavLinkWrapper to="/">
             <Typography
               variant="h5"
@@ -24,7 +24,7 @@ const Navbar = () => {
             </Typography>
           </NavLinkWrapper>
         </Grid>
-        <Grid xs={6} display={"flex"} justifyContent={"center"}>
+        <Grid xs={6} display={"flex"} justifyContent={"center"} item>
           <NavLink to="/" style={NavLinkStyles}>
             <ButtonWrapper>
               <Typography fontWeight={"500"}>Home</Typography>
@@ -36,7 +36,7 @@ const Navbar = () => {
             </ButtonWrapper>
           </NavLink>
         </Grid>
-        <Grid xs={3} display={"flex"} justifyContent={"right"}>
+        <Grid xs={3} display={"flex"} justifyContent={"right"} item>
           {isAuth && (
             <NavLink to="/profile" style={NavLinkStyles}>
               <ButtonWrapper>
