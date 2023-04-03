@@ -1,6 +1,6 @@
 import { Box, Button, TextField, Typography } from "@mui/material";
 import { useFormik } from "formik";
-import { signinValidationSchema } from "./Signin.utils";
+import { signinValidationSchema } from "./Signup.utils";
 
 const Signin = () => {
   const onSubmit = (values: any) => {
@@ -33,7 +33,7 @@ const Signin = () => {
         marginBottom={"20px"}
         fontWeight={"bold"}
       >
-        Sign In
+        Sign Up
       </Typography>
       <form onSubmit={formik.handleSubmit}>
         <Box

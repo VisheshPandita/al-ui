@@ -17,7 +17,7 @@ const LandingPage = () => {
           <Typography fontWeight={"bold"}>Login</Typography>
         </Button>
         <Button component={Link} to={"/signin"} variant="outlined">
-          <Typography fontWeight={"bold"}>Signin</Typography>
+          <Typography fontWeight={"bold"}>Sign Up</Typography>
         </Button>
       </Box>
     </Box>

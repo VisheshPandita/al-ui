@@ -4,7 +4,7 @@ import About from "./pages/About/About";
 import Navbar from "./components/Navbar/Navbar";
 import Profile from "./pages/Profile/Profile";
 import Login from "./pages/Login/Login";
-import Signin from "./pages/Signin/Signin";
+import Signin from "./pages/Signup/Signup";
 
 function AffiliatedLink() {
   return (
