@@ -52,9 +52,9 @@ const Navbar = () => {
             </NavLink>
           )}
           {!isAuth && (
-            <NavLink to="/signin" style={NavLinkStyles}>
+            <NavLink to="/signup" style={NavLinkStyles}>
               <ButtonWrapper>
-                <Typography fontWeight={"500"}>SignIn</Typography>
+                <Typography fontWeight={"500"}>Sign Up</Typography>
               </ButtonWrapper>
             </NavLink>
           )}

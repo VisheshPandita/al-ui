@@ -1,9 +1,18 @@
 import { Box, Button, TextField, Typography } from "@mui/material";
 import { useFormik } from "formik";
+import { useDispatch } from "react-redux";
 import { loginValidationSchema } from "./Login.utls";
+import { authenticate } from "../../store/features/common";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
   const onSubmit = (values: any) => {
+    // TODO: api call create async thunk
+    dispatch(authenticate({ token: "abcd" }));
+    navigate("/profile");
+
     console.log(values);
   };
 
