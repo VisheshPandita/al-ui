@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getConfig } from "../store/features/auth";
 import { authenticate } from "../store/features/common";
-import { IAuth, IUserConfig } from "../store/types";
+import { IAuth, IUserConfig } from "../types";
 
 export const AuthContext = createContext<{
   username: string | null;

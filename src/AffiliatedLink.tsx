@@ -12,18 +12,7 @@ import { Suspense } from "react";
 import AuthContextProvider from "./context/AuthContext";
 import { useAppSelector } from "./store/hooks";
 import { isAuthenticated } from "./store/features/common";
-
-const PageLoader = () => (
-  <Box
-    display="flex"
-    height="100%"
-    justifyContent="center"
-    alignItems="center"
-    sx={{ color: "#91B0FA" }}
-  >
-    <CircularProgress size="5rem" color="inherit" />
-  </Box>
-);
+import PageLoader from "./components/PageLoader/PageLoader";
 
 function AffiliatedLink() {
   const isAuth = useAppSelector(isAuthenticated);
