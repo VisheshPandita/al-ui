@@ -1,17 +1,12 @@
 import { useAppSelector } from "./store/hooks";
 import { isAuthenticated } from "./store/features/common";
-import { Outlet, useNavigate } from "react-router-dom";
+import { Navigate, Outlet } from "react-router-dom";
 import { lazy, useEffect } from "react";
 
 export default function PrivateRoute() {
-  const navigate = useNavigate();
   const isAuth = useAppSelector(isAuthenticated);
 
-  useEffect(() => {
-    if (!isAuth) navigate("/login");
-  }, []);
-
-  return <Outlet />;
+  return isAuth ? <Outlet /> : <Navigate to="/login" replace={true} />;
 }
 
 // Add private Routes Here

@@ -4,17 +4,19 @@ import { useDispatch } from "react-redux";
 import { loginValidationSchema } from "./Login.utls";
 import { authenticate } from "../../store/features/common";
 import { useNavigate } from "react-router-dom";
+import { AuthContext } from "../../context/AuthContext";
+import { useContext } from "react";
 
 const Login = () => {
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
-  const onSubmit = (values: any) => {
-    // TODO: api call create async thunk
-    dispatch(authenticate({ token: "abcd" }));
-    navigate("/profile");
+  const { login } = useContext(AuthContext);
+  // const dispatch = useDispatch();
+  // const navigate = useNavigate();
 
+  const onSubmit = (values: any) => {
     console.log(values);
+    login(values.email, values.password).catch(() => console.log("failed"));
   };
+  // TODO: remove formik dependency
 
   const formik = useFormik({
     initialValues: {

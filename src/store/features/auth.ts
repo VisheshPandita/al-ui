@@ -1,18 +1,17 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
-const initialState = {
-  loading: false,
-  userInfo: {}, // for user object
-  userToken: null, // for storing the JWT
-  error: null,
-  success: false, // for monitoring the registration process.
-};
+const initialState = {};
 
-const authSlice = createSlice({
+export const authSlice = createSlice({
   name: "auth",
   initialState,
-  reducers: {},
-  extraReducers: {},
+  reducers: {
+    getConfig: (state: any, { payload }: PayloadAction<any>) => {
+      state.user = payload;
+    },
+  },
 });
+
+export const { getConfig } = authSlice.actions;
 
 export default authSlice.reducer;

@@ -1,4 +1,4 @@
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, BrowserRouter, Navigate } from "react-router-dom";
 import LandingPage from "./pages/LandingPage/LandingPage";
 import About from "./pages/About/About";
 import Navbar from "./components/Navbar/Navbar";
@@ -9,27 +9,31 @@ import NotFound from "./pages/NotFound/NotFound";
 import { Box, CircularProgress } from "@mui/material";
 import PrivateRoute, { routes } from "./ProtectedRoutes";
 import { Suspense } from "react";
-
-const PageLoader = () => (
-  <Box
-    display="flex"
-    height="100%"
-    justifyContent="center"
-    alignItems="center"
-    sx={{ color: "#91B0FA" }}
-  >
-    <CircularProgress size="5rem" color="inherit" />
-  </Box>
-);
+import AuthContextProvider from "./context/AuthContext";
+import { useAppSelector } from "./store/hooks";
+import { isAuthenticated } from "./store/features/common";
+import PageLoader from "./components/PageLoader/PageLoader";
 
 function AffiliatedLink() {
+  const isAuth = useAppSelector(isAuthenticated);
+
   return (
-    <>
+    <AuthContextProvider>
       <Navbar />
       <Routes>
         <Route path="/" element={<LandingPage />}></Route>
-        <Route path="/login" element={<Login />}></Route>
-        <Route path="/signup" element={<Signup />}></Route>
+        <Route
+          path="/login"
+          element={
+            isAuth ? <Navigate to="/profile" replace={true} /> : <Login />
+          }
+        ></Route>
+        <Route
+          path="/signup"
+          element={
+            isAuth ? <Navigate to="/profile" replace={true} /> : <Signup />
+          }
+        ></Route>
         <Route path="/about" element={<About />}></Route>
 
         <Route element={<PrivateRoute />}>
@@ -49,7 +53,7 @@ function AffiliatedLink() {
         </Route>
         <Route path="*" element={<NotFound />} />
       </Routes>
-    </>
+    </AuthContextProvider>
   );
 }
 
