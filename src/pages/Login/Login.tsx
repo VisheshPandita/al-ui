@@ -1,4 +1,4 @@
-import { Box, Button, TextField, Typography } from "@mui/material";
+import { Box, Button, Grid, TextField, Typography } from "@mui/material";
 import { useFormik } from "formik";
 import { useDispatch } from "react-redux";
 import { loginValidationSchema } from "./Login.utls";
@@ -30,51 +30,64 @@ const Login = () => {
   return (
     <Box
       sx={{
-        maxWidth: 500,
-        marginX: "auto",
-        marginTop: "15%",
+        display: "flex",
+        height: "calc(100% - 72px)",
+        overflow: "auto",
+        justifyContent: "center",
+        alignItems: "center",
+        padding: 2,
+        boxSizing: "border-box",
       }}
     >
-      <Typography
-        variant="h3"
-        textAlign={"center"}
-        marginBottom={"20px"}
-        fontWeight={"bold"}
+      <Grid
+        container
+        sx={{
+          display: "flex",
+          flexDirection: "column",
+          height: "calc(40%)",
+          width: "calc(40%)",
+          alignItems: "center",
+          gap: 3,
+        }}
       >
-        Log In
-      </Typography>
-      <form onSubmit={formik.handleSubmit}>
-        <TextField
-          fullWidth
-          id="email"
-          name="email"
-          label="Email"
-          value={formik.values.email}
-          onChange={formik.handleChange}
-          error={formik.touched.email && Boolean(formik.errors.email)}
-          helperText={formik.touched.email && formik.errors.email}
-          sx={{
-            marginBottom: "20px",
-          }}
-        />
-        <TextField
-          fullWidth
-          id="password"
-          name="password"
-          label="Password"
-          type="password"
-          value={formik.values.password}
-          onChange={formik.handleChange}
-          error={formik.touched.password && Boolean(formik.errors.password)}
-          helperText={formik.touched.password && formik.errors.password}
-          sx={{
-            marginBottom: "20px",
-          }}
-        />
-        <Button color="primary" variant="contained" fullWidth type="submit">
-          <Typography fontWeight={"bold"}>Submit</Typography>
-        </Button>
-      </form>
+        <Grid item>
+          <Typography variant="h3">Log In</Typography>
+        </Grid>
+        <Grid item>
+          <form onSubmit={formik.handleSubmit}>
+            <TextField
+              fullWidth
+              id="email"
+              name="email"
+              label="Email"
+              value={formik.values.email}
+              onChange={formik.handleChange}
+              error={formik.touched.email && Boolean(formik.errors.email)}
+              helperText={formik.touched.email && formik.errors.email}
+              sx={{
+                marginBottom: "20px",
+              }}
+            />
+            <TextField
+              fullWidth
+              id="password"
+              name="password"
+              label="Password"
+              type="password"
+              value={formik.values.password}
+              onChange={formik.handleChange}
+              error={formik.touched.password && Boolean(formik.errors.password)}
+              helperText={formik.touched.password && formik.errors.password}
+              sx={{
+                marginBottom: "20px",
+              }}
+            />
+            <Button color="primary" variant="contained" fullWidth type="submit">
+              <Typography variant="h3">Submit</Typography>
+            </Button>
+          </form>
+        </Grid>
+      </Grid>
     </Box>
   );
 };
