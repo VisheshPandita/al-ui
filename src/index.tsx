@@ -8,18 +8,23 @@ import { store } from "./store/store";
 import { BrowserRouter } from "react-router-dom";
 import { ThemeProvider } from "@mui/material";
 import { theme } from "./styles/theme";
+import { PersistGate } from "redux-persist/integration/react";
+import { persistStore } from "redux-persist";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
 );
+const persistor = persistStore(store);
 root.render(
   <React.StrictMode>
     <Provider store={store}>
-      <BrowserRouter>
-        <ThemeProvider theme={theme}>
-          <AffiliatedLink />
-        </ThemeProvider>
-      </BrowserRouter>
+      <PersistGate loading={null} persistor={persistor}>
+        <BrowserRouter>
+          <ThemeProvider theme={theme}>
+            <AffiliatedLink />
+          </ThemeProvider>
+        </BrowserRouter>
+      </PersistGate>
     </Provider>
   </React.StrictMode>
 );
