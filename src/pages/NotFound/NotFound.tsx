@@ -1,7 +1,21 @@
-import React from "react";
+import { Box, Typography } from "@mui/material";
 
 const NotFound = () => {
-  return <h1>Not Found</h1>;
+  return (
+    <Box
+      sx={{
+        display: "flex",
+        height: "calc(100% - 72px)",
+        overflow: "auto",
+        justifyContent: "center",
+        alignItems: "center",
+        padding: 2,
+        boxSizing: "border-box",
+      }}
+    >
+      <Typography variant="h3">NotFound</Typography>
+    </Box>
+  );
 };
 
 export default NotFound;

@@ -5,54 +5,53 @@ import { ButtonWrapper, NavLinkStyles, NavLinkWrapper } from "./Navbar.styles";
 import { NavLink } from "react-router-dom";
 import LinkIcon from "@mui/icons-material/Link";
 import ProfilePopper from "./ProfilePopper";
+import NavButton from "../Button/NavButton";
 
 const Navbar = () => {
   const isAuth = useAppSelector(isAuthenticated);
+  // TODO: make button component with sx
 
   return (
-    <Box component="nav">
+    <Box
+      sx={{
+        minHeight: "72px",
+        maxHeight: "min-content",
+        padding: "0 32px",
+        display: "flex",
+        justifyContent: "space-between",
+        alignItems: "center",
+        boxSizing: "border-box",
+      }}
+    >
       <Grid container>
-        <Grid xs={3} item>
-          <NavLinkWrapper to="/">
-            <Typography
-              variant="h5"
-              display={"flex"}
-              alignItems={"center"}
-              fontWeight={"bold"}
-            >
+        <Grid item xs={3}>
+          <NavLink style={{ textDecoration: "none", color: "inherit" }} to="/">
+            <Typography variant="h3">
               <LinkIcon />
               Affiliated Link
             </Typography>
-          </NavLinkWrapper>
-        </Grid>
-        <Grid xs={6} display={"flex"} justifyContent={"center"} item>
-          <NavLink to="/" style={NavLinkStyles}>
-            <ButtonWrapper>
-              <Typography fontWeight={"500"}>Home</Typography>
-            </ButtonWrapper>
-          </NavLink>
-          <NavLink to="/about" style={NavLinkStyles}>
-            <ButtonWrapper>
-              <Typography fontWeight={"500"}>About</Typography>
-            </ButtonWrapper>
           </NavLink>
         </Grid>
-        <Grid xs={3} display={"flex"} justifyContent={"right"} item>
-          {isAuth && <ProfilePopper />}
-
-          {!isAuth && (
-            <NavLink to="/login" style={NavLinkStyles}>
-              <ButtonWrapper>
-                <Typography fontWeight={"500"}>LogIn</Typography>
-              </ButtonWrapper>
-            </NavLink>
-          )}
-          {!isAuth && (
-            <NavLink to="/signup" style={NavLinkStyles}>
-              <ButtonWrapper>
-                <Typography fontWeight={"500"}>Sign Up</Typography>
-              </ButtonWrapper>
-            </NavLink>
+        <Grid
+          item
+          xs={6}
+          sx={{ display: "flex", justifyContent: "center", gap: 2 }}
+        >
+          <NavButton path="/" text="Home" />
+          <NavButton path="/about" text="About" />
+        </Grid>
+        <Grid
+          item
+          xs={3}
+          sx={{ display: "flex", justifyContent: "flex-end", gap: 2 }}
+        >
+          {isAuth ? (
+            <ProfilePopper />
+          ) : (
+            <>
+              <NavButton path="/login" text="LogIn" />
+              <NavButton path="/signup" text="SignUp" />
+            </>
           )}
         </Grid>
       </Grid>
