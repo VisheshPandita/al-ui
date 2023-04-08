@@ -1,4 +1,4 @@
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, BrowserRouter } from "react-router-dom";
 import LandingPage from "./pages/LandingPage/LandingPage";
 import About from "./pages/About/About";
 import Navbar from "./components/Navbar/Navbar";
@@ -9,6 +9,7 @@ import NotFound from "./pages/NotFound/NotFound";
 import { Box, CircularProgress } from "@mui/material";
 import PrivateRoute, { routes } from "./ProtectedRoutes";
 import { Suspense } from "react";
+import AuthContextProvider from "./context/AuthContext";
 
 const PageLoader = () => (
   <Box
@@ -24,7 +25,7 @@ const PageLoader = () => (
 
 function AffiliatedLink() {
   return (
-    <>
+    <AuthContextProvider>
       <Navbar />
       <Routes>
         <Route path="/" element={<LandingPage />}></Route>
@@ -49,7 +50,7 @@ function AffiliatedLink() {
         </Route>
         <Route path="*" element={<NotFound />} />
       </Routes>
-    </>
+    </AuthContextProvider>
   );
 }
 
