@@ -28,7 +28,12 @@ function AffiliatedLink() {
             isAuth ? <Navigate to="/profile" replace={true} /> : <Login />
           }
         ></Route>
-        <Route path="/signup" element={<Signup />}></Route>
+        <Route
+          path="/signup"
+          element={
+            isAuth ? <Navigate to="/profile" replace={true} /> : <Signup />
+          }
+        ></Route>
         <Route path="/about" element={<About />}></Route>
 
         <Route element={<PrivateRoute />}>
