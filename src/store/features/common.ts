@@ -44,7 +44,7 @@ const commonSlice = createSlice({
     authenticate: (state, action) => {
       return {
         ...state,
-        token: action?.payload?.token ?? state?.token,
+        token: action?.payload?.token,
       };
     },
   },

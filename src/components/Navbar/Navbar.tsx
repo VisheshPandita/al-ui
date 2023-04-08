@@ -4,6 +4,7 @@ import { isAuthenticated } from "../../store/features/common";
 import { ButtonWrapper, NavLinkStyles, NavLinkWrapper } from "./Navbar.styles";
 import { NavLink } from "react-router-dom";
 import LinkIcon from "@mui/icons-material/Link";
+import ProfilePopper from "./ProfilePopper";
 
 const Navbar = () => {
   const isAuth = useAppSelector(isAuthenticated);
@@ -37,13 +38,8 @@ const Navbar = () => {
           </NavLink>
         </Grid>
         <Grid xs={3} display={"flex"} justifyContent={"right"} item>
-          {isAuth && (
-            <NavLink to="/profile" style={NavLinkStyles}>
-              <ButtonWrapper>
-                <Typography fontWeight={"500"}>Profile</Typography>
-              </ButtonWrapper>
-            </NavLink>
-          )}
+          {isAuth && <ProfilePopper />}
+
           {!isAuth && (
             <NavLink to="/login" style={NavLinkStyles}>
               <ButtonWrapper>

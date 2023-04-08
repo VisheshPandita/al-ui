@@ -28,7 +28,7 @@ const AuthContextProvider = ({ children }: any) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const login = async (username: string, password: string) => {
+  const login = (username: string, password: string) => {
     console.log({ username, password });
     return (
       new Promise((resolve, reject) =>

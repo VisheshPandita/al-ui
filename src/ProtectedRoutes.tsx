@@ -6,6 +6,9 @@ import { lazy, useEffect } from "react";
 export default function PrivateRoute() {
   const navigate = useNavigate();
   const isAuth = useAppSelector(isAuthenticated);
+  useEffect(() => {
+    console.log(isAuth);
+  }, [isAuth]);
 
   if (!isAuth) return <Navigate to="/login" />;
   else return <Outlet />;
